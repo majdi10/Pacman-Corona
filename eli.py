@@ -31,6 +31,17 @@ def bfs(x, y, color):
             image[x + 1][y + 1] = color
             painted_pixels -= 1
 
+    if x + 1 < image.shape[0] and y - 1 >= 0 and painted_pixels > 0:
+        if sum(image[x + 1][y - 1]) == 0:  # if black
+            bfs_arr.insert(0, [x + 1, y - 1, color])
+            image[x + 1][y - 1] = color
+            painted_pixels -= 1
+
+    if y - 1 >= 0 and painted_pixels > 0:
+        if sum(image[x][y - 1]) == 0:  # if black
+            bfs_arr.insert(0, [x, y - 1, color])
+            image[x][y - 1] = color
+            painted_pixels -= 1
     bfs_arr.pop()
 
 
@@ -47,11 +58,12 @@ if __name__ == '__main__':
                 r = random.randrange(255)
                 g = random.randrange(255)
                 b = random.randrange(254)
-                painted_pixels = 700
-                # image[row][col] = [r, g, b]
+                painted_pixels = 100
+                image[row][col] = [r, g, b]
                 bfs_arr = [[row, col, [r, g, b]]]
                 while len(bfs_arr) > 0 and painted_pixels > 0:
-                    bfs(bfs_arr[0][0], bfs_arr[0][1], [r, g, b])
+                    # a = bfs_arr.pop()
+                    bfs(bfs_arr[len(bfs_arr)-1][0], bfs_arr[len(bfs_arr)-1][1], [r, g, b])
                 # for i in range(row, row+pixel_width):
                 #     for j in range(col, col+pixel_height):
                 #         if sum(image[i][j]) != 765:
