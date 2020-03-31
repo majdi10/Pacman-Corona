@@ -226,7 +226,7 @@ def sort_centers():
 
 
 if __name__ == '__main__':
-    og_image = cv2.imread('map.PNG')
+    og_image = cv2.imread('map.png')
 
     # image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
     print(og_image.shape)
@@ -235,11 +235,11 @@ if __name__ == '__main__':
     print("Number of perfect coins: " + str(len(center)))
     lines_coins_image = draw_lines(coins_image.copy())
 
-    cv2.imwrite("food.png", lines_coins_image)
-    # plt.figure(figsize=[15, 7])
+    # cv2.imwrite("food.png", lines_coins_image)
+    plt.figure(figsize=[15, 7])
     # plt.subplot(131)
-    # plt.imshow(lines_coins_image)
+    plt.imshow(lines_coins_image)
     # plt.imshow(og_image, cmap='gray')
-    # plt.show()
+    plt.show()
 
 
